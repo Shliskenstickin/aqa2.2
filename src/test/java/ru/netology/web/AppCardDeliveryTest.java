@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.time.LocalDate;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -18,7 +19,8 @@ public class AppCardDeliveryTest {
     @Test
     void test01() {
         $("[data-test-id=\"city\"] [class=\"input__control\"]").setValue("Москва");
-//        $("[data-test-id=\"date\"]").setValue("Москва");
+//        String date = LocalDate.now().plusDays(4).toString();
+//        $("[data-test-id=\"date\"]").setValue(date);
         $("[data-test-id=\"name\"] [class=\"input__control\"]").setValue("Иван");
         $("[data-test-id=\"phone\"] [class=\"input__control\"]").setValue("+71112223344");
         $("[data-test-id=\"agreement\"] [class=\"checkbox__box\"]").click();
