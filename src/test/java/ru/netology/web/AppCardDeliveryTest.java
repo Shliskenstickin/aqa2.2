@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static java.time.format.DateTimeFormatter.ofPattern;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppCardDeliveryTest {
     @BeforeEach
@@ -89,8 +90,8 @@ public class AppCardDeliveryTest {
         $("[data-test-id=\"phone\"] [class=\"input__control\"]").setValue("+71112223344");
         $$("button").find(exactText("Забронировать")).click();
         $(("[data-test-id=\"agreement\"].input_invalid")).shouldBe(visible);
-        $(("[data-test-id=\"agreement\"].input_invalid .checkbox__text"))
-                .shouldHave(exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
+        String color = $(("[data-test-id=\"agreement\"].input_invalid .checkbox__text")).getCssValue("color");
+        assertEquals("rgba(255, 92, 92, 1)", color);
     }
 
     @Test
